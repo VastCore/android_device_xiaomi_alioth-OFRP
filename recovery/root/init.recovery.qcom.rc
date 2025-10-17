@@ -77,9 +77,9 @@ service unified-script /system/bin/unified-script.sh
 on post-fs
     start boot-hal-1-1
 
-on init
-    start hwservicemanager
-    setprop crypto.ready 1
+#on init
+#    start hwservicemanager
+#    setprop crypto.ready 1
 
 on boot
     chmod 0777 /system/bin/unified-script.sh
