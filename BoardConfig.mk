@@ -97,7 +97,7 @@ ifeq ($(FOX_BUILD_FULL_KERNEL_SOURCES),1)
     LLVM := 1
     LLVM_IAS := 1
 else
-    TARGET_PREBUILT_KERNEL := $(KERNEL_PATH)/Image.gz-dtb
+    TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/Image
 #    BOARD_PREBUILT_DTBOIMAGE := $(KERNEL_PATH)/dtbo.img
 endif
 
