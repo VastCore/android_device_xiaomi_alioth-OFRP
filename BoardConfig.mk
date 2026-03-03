@@ -1,7 +1,7 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 #
-# Copyright (C) 2022-2025 The OrangeFox Recovery Project
+# Copyright (C) 2022-2026 The OrangeFox Recovery Project
 # SPDX-License-Identifier: GPL-3.0-or-later
 #
 
@@ -136,7 +136,7 @@ TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
 
 # Recovery
 BOARD_HAS_LARGE_FILESYSTEM := true
-TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
 LC_ALL := C
 
 # System as root
