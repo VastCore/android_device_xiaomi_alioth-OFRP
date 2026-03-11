@@ -172,6 +172,13 @@ TARGET_USES_LOGD := true
 TW_EXCLUDE_APEX := true
 TW_SUPPORT_INPUT_AIDL_HAPTICS := true
 
+TARGET_RECOVERY_DEVICE_MODULES += debuggerd
+RECOVERY_BINARY_SOURCE_FILES += $(TARGET_OUT_EXECUTABLES)/debuggerd
+TARGET_RECOVERY_DEVICE_MODULES += strace
+RECOVERY_BINARY_SOURCE_FILES += $(TARGET_OUT_EXECUTABLES)/strace
+TARGET_RECOVERY_DEVICE_MODULES += tombstoned
+RECOVERY_BINARY_SOURCE_FILES += $(TARGET_OUT_EXECUTABLES)/tombstoned
+
 # Python
 TW_INCLUDE_PYTHON := true
 
@@ -193,9 +200,8 @@ ifeq ($(FOX_VENDOR_BOOT_RECOVERY),1)
       BOARD_INCLUDE_RECOVERY_RAMDISK_IN_VENDOR_BOOT := true
   endif
 
-  ifneq ($(FOX_VENDOR_BOOT_RECOVERY_FULL_REFLASH),1)
-      # disable the reflash menu, until all vendor_boot ROMs have a v4 header - else it won't work
-      OF_NO_REFLASH_CURRENT_ORANGEFOX := 1
-  endif
+  # alioth vendor_boot ROMs still only have a v3 header
+  # disable the reflash menu, until all vendor_boot ROMs have a v4 header - else it won't work
+  OF_NO_REFLASH_CURRENT_ORANGEFOX := 1
 endif
 #
