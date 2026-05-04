@@ -65,4 +65,9 @@ OF_USE_DMCTL := 1
 
 # frp
 OF_ENABLE_FRP_ADDON := 1
+
+# don't keep log history - only use for Stable releases
+ifeq ($(FOX_BUILD_TYPE),Stable)
+   OF_DONT_KEEP_LOG_HISTORY := 1
+endif
 #
