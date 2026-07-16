@@ -1,7 +1,7 @@
 #!/system/bin/sh -x
 #
 #	This file is part of the OrangeFox Recovery Project
-# 	Copyright (C) 2024-2026 The OrangeFox Recovery Project
+# 	Copyright (C) 2026 The OrangeFox Recovery Project
 #
 #	OrangeFox is free software: you can redistribute it and/or modify
 #	it under the terms of the GNU General Public License as published by
@@ -24,26 +24,32 @@ LOGMSG() {
 	echo "$@" >> /tmp/recovery.log;
 }
 
-# backup the vendor_boot partition before flashing a ROM
-backup_vboot() {
+# restore the backed up vendor_boot recovery image after flashing a vendor_boot ROM
+restore_vboot() {
 local a=$(getprop "orangefox.vendor_boot.recovery");
 local b=$(getprop "tw_is_vendor_boot");
 local slot=$(getprop "ro.boot.slot_suffix");
-	[ -z "$slot" ] && return;
+local src="/tmp/fox_vboot_backup.img";
+
+	[ ! -s $src -o -z "$slot" ] && return;
+
 	if [ "$a" = "true" -o "$b" = "1" ]; then
-		root="/dev/block/bootdevice/by-name/vendor_boot";
-		src=$root"$slot";
-		LOGMSG "I: Backing up OrangeFox (vendor_boot$slot)";
-		dd if=$src of="/tmp/fox_vboot_backup.img" bs=1M;
+		local dest="_b";
+		local root="/dev/block/bootdevice/by-name/vendor_boot";
+		if [ "$slot" = "_a" ]; then
+			dest=$root"_b";
+		else
+			dest=$root"_a";
+		fi
+		LOGMSG "I: Restoring OrangeFox to $dest";
+		dd if="$src" of="$dest" bs=1M;
 		[ "$?" = "0" ] && LOGMSG "I: Succeeded! " || LOGMSG "I: Failed :-(";
+		sync;
 	fi
 }
 
 #
-LOGMSG "I: Running pre-ROM-flash script...";
-LOGMSG "I: Arguments received=\"$@\"";
-
-mkdir -p /data/cache/recovery/;
-backup_vboot;
+LOGMSG "I: Running post-ROM-flash-completion script...";
+restore_vboot;
 exit 0;
 #
