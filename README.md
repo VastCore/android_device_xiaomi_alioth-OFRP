@@ -1,11 +1,11 @@
 # OrangeFox device tree for alioth (Xiaomi Mi 11X / Redmi K40 / POCO F3)
-This tree is for building OrangeFox Recovery for the _alioth_ devices
+用于为 _alioth_ 设备构建 OrangeFox Recovery
 
 The Xiaomi Mi 11X (codenamed _"aliothin"_), Redmi K40 / POCO F3 (codenamed _"alioth"_) is a mid range smartphone from Xiaomi.
 
-# Device specifications
+# 设备规格
 
-| Device       | Xiaomi Mi 11X / Redmi K40 / POCO F3                        |
+| 设备       | Xiaomi Mi 11X / Redmi K40 / POCO F3                        |
 | -----------: | :----------------------------------------------------------|
 | SoC          | Qualcomm SM8250 Snapdragon 870 5G                          |
 | CPU          | 8x Qualcomm® Kryo™ 585 up to 2.84GHz                       |
@@ -17,7 +17,7 @@ The Xiaomi Mi 11X (codenamed _"aliothin"_), Redmi K40 / POCO F3 (codenamed _"ali
 | Dimensions   | 163.7 x 76.4 x 7.8 mm                                      |
 | Display      | 1080 x 2400 (20:9), 6.67 inches                            |
 
-## Features
+## 特征
 
 **Works**
 
