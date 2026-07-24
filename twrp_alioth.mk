@@ -22,9 +22,10 @@ $(call inherit-product, vendor/twrp/config/common.mk)
 # Device identifier. This must come after all inclusions
 PRODUCT_NAME := twrp_$(PRODUCT_RELEASE_NAME)
 PRODUCT_DEVICE := $(PRODUCT_RELEASE_NAME)
-PRODUCT_BRAND := POCO
+PRODUCT_BRAND := Redmi
 PRODUCT_MANUFACTURER := Xiaomi
-PRODUCT_MODEL := POCO F3
-
+PRODUCT_MODEL := Redmi K40
+# 加入简体中文区域支持
+PRODUCT_LOCALES += en_US zh_CN zh_TW
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 #
